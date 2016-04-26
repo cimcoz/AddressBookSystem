@@ -1,0 +1,13 @@
+com\project\contact\model\Phone.class
+com\project\contact\dao\GroupsRecordEntity.class
+com\project\contact\dao\GroupsEntity.class
+com\project\contact\dao\PhoneEntity.class
+com\project\contact\model\GroupsRecord.class
+com\project\contact\object\ParseJson.class
+com\project\contact\object\ParseMD5.class
+com\project\contact\controller\DataController.class
+com\project\contact\controller\LoginController.class
+com\project\contact\dao\UserEntity.class
+com\project\contact\model\Groups.class
+com\project\contact\dao\ConfigEntity.class
+com\project\contact\object\ParseGroup.class
