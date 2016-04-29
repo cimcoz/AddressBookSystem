@@ -109,7 +109,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        查看联系人
+                        分组管理
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
@@ -117,30 +117,16 @@
                             <i class="fa fa-dashboard"></i> <a href="javascript:void(0);"> 通讯录管理系统</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-file"></i> 查看联系人
+                            <i class="fa fa-file"></i> 分组管理
                         </li>
                     </ol>
                 </div>
-                <div id="search" class="pull-left">
-                    <div class="col-sm-10">
-                        <label >搜索</label>
-                        <input class="form-control" type="text" name="search" placeholder="姓名/电话/拼音/首字母"
-                               style="min-width: 300px;">
-                    </div>
-                    <!--button type="button" class="btn btn-primary">
-                        搜索
-                    </button-->
-                </div>
 
                 <table class="table table-hover">
-                    <caption>联系人列表</caption>
+                    <caption>分组列表</caption>
                     <thead>
                     <tr>
-                        <th>姓名</th>
-                        <th>手机号码</th>
-                        <th>即时通信工具及号码</th>
-                        <th>电子邮箱</th>
-                        <th>所属组</th>
+                        <th>名称</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -157,32 +143,45 @@
 </div>
 <!-- /#wrapper -->
 
-<script id="tpl-phones" type="text/template">
-    {@each phones as item,k}
+<div class="modal fade" id="changeModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改基础信息选项
+                </h4>
+            </div>
+            <div class="modal-body">
+                <label for="name">选项名称</label>
+                <input class="form-control" type="text" id="name" name="name"/>
+                <input type="hidden" name="id"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="change-btn" class="btn btn-primary">
+                    修改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script id="tpl-group" type="text/template">
+    {@each groups as item,k}
     <tr>
         <td>${item.name}</td>
-        <td>${item.number}</td>
-        <td>${item.number2}</td>
-        <td>${item.email}</td>
-        {@if item.group}
-        <td>${item.group}</td>
-        {@else}
-        <td>无</td>
-        {@/if}
         <td>
-            <a href="/contact/phoneDetail?id=${item.id}">
-                <button type="button" class="btn btn-success">
-                    查看联系人
-                </button>
-            </a>
-            <a href="/contact/phoneModify?id=${item.id}">
-                <button type="button" class="btn btn-info" name="table-btn-change">
-                    修改联系人
-                </button>
-            </a>
+            <button type="button" class="btn btn-info" name="table-btn-change">
+                <input type="hidden" value="${item.id}"/>
+                修改分组
+            </button>
             <button type="button" class="btn btn-danger" name="table-btn-delete">
                 <input type="hidden" value="${item.id}"/>
-                删除联系人
+                删除分组
             </button>
         </td>
     </tr>
@@ -211,26 +210,26 @@
         init();
         function init() {
             loading.showLoading();
-            var tpl_phones = $("#tpl-phones").html();
-            var result = http.httpGet("/data/phone");
+            var tpl_phones = $("#tpl-group").html();
+            var result = http.httpGet("/data/group");
             if (result != 0) {
                 var data = {
-                    phones: result
+                    groups: result
                 };
                 var html = juicer(tpl_phones, data);
                 $("#content").append(html);
             } else {
-                $("#content").append("<td>暂时没有联系人</td>");
+                $("#content").append("<td>暂时没有</td>");
             }
             loading.hideLoading();
             bindInit();
         }
 
         function bindInit() {
-            $("button[name='table-btn-delete']").on("click",function () {
-                if (confirm("确认删除联系人？")) {
+            $("button[name='table-btn-delete']").on("click", function () {
+                if (confirm("确认删除分组？")) {
                     var id = $(this).find("input").val();
-                    var result = http.httpDelete("/data/phone?id=" + id, null);
+                    var result = http.httpDelete("/data/group?id=" + id, null);
                     if (result == 1) {
                         alert("删除成功");
                         location.reload();
@@ -243,31 +242,29 @@
             });
         }
 
-        $("#search").find("input").on("change", function () {
-            var search = $("#search").find("input").val();
-            if (search != "" && search != null) {
-                loading.showLoading();
-                var search = $("#search").find("input").val();
-                var tpl_phones = $("#tpl-phones").html();
-                var result = http.httpGet("/data/searchPhone?search=" + search);
-                $("#content").empty();
-                if (result != 0) {
-                    var data = {
-                        phones: result
-                    };
-                    var html = juicer(tpl_phones, data);
-                    $("#content").append(html);
-                } else {
-                    $("#content").append("<td>暂时没有找到联系人</td>");
-                }
-                loading.hideLoading();
-                bindInit();
-            } else {
-                init();
+        $("button[name='table-btn-change']").on("click", function () {
+            loading.showLoading();
+            var id = $(this).find("input").val();
+            var result = http.httpGet("/data/group/" + id, null);
+            console.log(result);
+            if (result) {
+                var modal = $("#changeModal");
+                modal.find("input[name='id']").val(result[0].id);
+                modal.find("input[name='name']").val(result[0].name);
             }
-
+            loading.hideLoading();
         });
-
+        $("#change-btn").on("click", function () {
+            var modal = $("#changeModal");
+            var id = modal.find("input[name='id']").val(result[0].id);
+            var name = modal.find("input[name='name']").val(result[0].name);
+            var result = http.httpPut("/data/group", {id: id, name: name});
+            if (result == 1) {
+                location.reload();
+            } else {
+                alert("修改失败");
+            }
+        });
 
     });
 </script>

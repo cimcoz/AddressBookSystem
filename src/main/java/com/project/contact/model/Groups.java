@@ -36,6 +36,7 @@ public class Groups {
         transaction = session.beginTransaction();
         crit = session.createCriteria(GroupsEntity.class);
     }
+
     public void finalize() throws Throwable {
         //
         super.finalize();
@@ -43,7 +44,7 @@ public class Groups {
         sessionFactory.close();
     }
 
-    public GroupsEntity getGroupById(Integer id){
+    public GroupsEntity getGroupById(Integer id) {
         /*crit.setMaxResults(1);
         crit.setFirstResult(0);
         List<GroupsEntity>list=crit.add(Restrictions.eq("id",id)).list();
@@ -52,25 +53,33 @@ public class Groups {
         }else{
             return list.get(0);
         }*/
-        return (GroupsEntity) session.get(GroupsEntity.class,id);
+        return (GroupsEntity) session.get(GroupsEntity.class, id);
     }
 
-    public void addGroup(Integer userId,String name){
-        GroupsEntity groupsEntity=new GroupsEntity();
+    public void addGroup(Integer userId, String name) {
+        GroupsEntity groupsEntity = new GroupsEntity();
         groupsEntity.setName(name);
         groupsEntity.setUserId(userId);
         session.save(groupsEntity);
         transaction.commit();
     }
 
-    public boolean deleteGroupById(Integer id,Integer userId){
+    public boolean updateGroup() {
+        GroupsEntity groupsEntity = (GroupsEntity) session.get(GroupsEntity.class, id);
+        groupsEntity.setName(name);
+        session.update(groupsEntity);
+        transaction.commit();
+        return true;
+    }
+
+    public boolean deleteGroupById(Integer id, Integer userId) {
         crit.setMaxResults(1);
         crit.setFirstResult(0);
-        List<GroupsEntity> list=new ArrayList<>();
-        list=crit.add(Restrictions.eq("id",id)).add(Restrictions.eq("userId",userId)).list();
-        if(list==null||list.isEmpty()){
+        List<GroupsEntity> list = new ArrayList<>();
+        list = crit.add(Restrictions.eq("id", id)).add(Restrictions.eq("userId", userId)).list();
+        if (list == null || list.isEmpty()) {
             return false;
-        }else{
+        } else {
             session.delete(list.get(0));
             transaction.commit();
             return true;
@@ -101,8 +110,8 @@ public class Groups {
         this.name = name;
     }
 
-    public List<GroupsEntity> getGroupsByUserId(Integer userId){
-        List<GroupsEntity> list = crit.add(Restrictions.eq("userId",userId)).list();
+    public List<GroupsEntity> getGroupsByUserId(Integer userId) {
+        List<GroupsEntity> list = crit.add(Restrictions.eq("userId", userId)).list();
         return list;
     }
 

@@ -69,6 +69,12 @@ public class User {
             return list.get(0);
         }
     }
+    //更新密码
+    public boolean updateUser(UserEntity userEntity){
+        session.update(userEntity);
+        transaction.commit();
+        return true;
+    }
 
     public void finalize() {
         //transaction.commit();

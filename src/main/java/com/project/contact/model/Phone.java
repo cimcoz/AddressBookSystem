@@ -25,6 +25,7 @@ public class Phone {
     private String number;
     private String name;
     private String pinyin;
+    private String shengmu;
     private String email;
     private String qq;
     private Timestamp createAt;
@@ -50,48 +51,101 @@ public class Phone {
         transaction = session.beginTransaction();
         crit = session.createCriteria(PhoneEntity.class);
     }
+
     public void finalize() {
         //transaction.commit();
         session.close();
         sessionFactory.close();
     }
 
-    public List<PhoneEntity> getPhoneBySearch(String search,Integer userId){
-        Disjunction dis=Restrictions.disjunction();
-        dis.add(Restrictions.like("name","%"+search+"%")).add(Restrictions.like("number","%"+search+"%")).add(Restrictions.like("number2","%"+search+"%")).add(Restrictions.like("pinyin","%"+search+"%")).add(Restrictions.like("number2","%"+search+"%"));
-        List<PhoneEntity>list =crit.add(dis).add(Restrictions.eq("userId",userId)).addOrder(Property.forName("pinyin").asc()) .list();
+    public List<PhoneEntity> getPhoneBySearch(String search, Integer userId) {
+        Disjunction dis = Restrictions.disjunction();
+        dis.add(Restrictions.like("name", "%" + search + "%")).add(Restrictions.like("number", "%" + search + "%")).add(Restrictions.like("number2", "%" + search + "%")).add(Restrictions.like("pinyin", "%" + search + "%")).add(Restrictions.like("shengmu", "%" + search + "%")).add(Restrictions.like("number2", "%" + search + "%"));
+        List<PhoneEntity> list = crit.add(dis).add(Restrictions.eq("userId", userId)).addOrder(Property.forName("pinyin").asc()).list();
         return list;
     }
 
-    public PhoneEntity getPhoneById(Integer id){
-        /*List<PhoneEntity>list =crit.add(Restrictions.eq("id",id)).list();
-        if(list==null||list.isEmpty()){
-            return null;
-        }else{
-            return list.get(0);
-        }*/
-        return (PhoneEntity) session.get(PhoneEntity.class,id);
+    public PhoneEntity getPhoneById(Integer id) {
+        return (PhoneEntity) session.get(PhoneEntity.class, id);
     }
 
-    public List<PhoneEntity> getAll(Integer userId){
-        List<PhoneEntity>list=crit.add(Restrictions.eq("userId",userId)).addOrder(Property.forName("pinyin").asc()).list();
+    public List<PhoneEntity> getPhoneListById(Integer id) {
+        List<PhoneEntity> list = new ArrayList<>();
+        list.add((PhoneEntity) session.get(PhoneEntity.class, id));
         return list;
     }
-    public boolean deletePhoneById(Integer id,Integer userId){
+
+    public List<PhoneEntity> getAll(Integer userId) {
+        List<PhoneEntity> list = crit.add(Restrictions.eq("userId", userId)).addOrder(Property.forName("pinyin").asc()).list();
+        return list;
+    }
+
+    public boolean updatePhone(PhoneEntity phoneEntity) {
+        //TODO
+        phoneEntity = copyProperties(phoneEntity);
+        session.update(phoneEntity);
+        transaction.commit();
+        return true;
+    }
+
+    private PhoneEntity copyProperties(PhoneEntity phoneEntity) {
+        if (number != null && !number.isEmpty()) {
+            phoneEntity.setNumber(number);
+        }
+        if (number2 != null && !number2.isEmpty()) {
+            phoneEntity.setNumber2(number2);
+        }
+        if (name != null && !name.isEmpty()) {
+            phoneEntity.setName(name);
+        }
+        if (pinyin != null && !pinyin.isEmpty()) {
+            phoneEntity.setPinyin(pinyin);
+        }
+        if (shengmu != null && !shengmu.isEmpty()) {
+            phoneEntity.setShengmu(shengmu);
+        }
+        if (email != null && !email.isEmpty()) {
+            phoneEntity.setEmail(email);
+        }
+        if (qq != null && !qq.isEmpty()) {
+            phoneEntity.setQq(qq);
+        }
+        if (workAddress != null && !workAddress.isEmpty()) {
+            phoneEntity.setWorkAddress(workAddress);
+        }
+        if (homeAddress != null && !homeAddress.isEmpty()) {
+            phoneEntity.setHomeAddress(homeAddress);
+        }
+        if (homePage != null && !homePage.isEmpty()) {
+            phoneEntity.setHomePage(homePage);
+        }
+        if (birthday != null && !birthday.isEmpty()) {
+            phoneEntity.setBirthday(birthday);
+        }
+        if (postCode != null && !postCode.isEmpty()) {
+            phoneEntity.setPostCode(postCode);
+        }
+        if (image != null && !image.isEmpty()) {
+            phoneEntity.setImage(image);
+        }
+        return phoneEntity;
+    }
+
+    public boolean deletePhoneById(Integer id, Integer userId) {
         crit.setMaxResults(1);
         crit.setFirstResult(0);
-        List<PhoneEntity> list=new ArrayList<>();
-        list=crit.add(Restrictions.eq("id",id)).add(Restrictions.eq("userId",userId)).list();
-        if(list==null||list.isEmpty()){
+        List<PhoneEntity> list = new ArrayList<>();
+        list = crit.add(Restrictions.eq("id", id)).add(Restrictions.eq("userId", userId)).list();
+        if (list == null || list.isEmpty()) {
             return false;
-        }else{
+        } else {
             session.delete(list.get(0));
             transaction.commit();
             return true;
         }
     }
 
-    public boolean addPhone(PhoneEntity phoneEntity){
+    public boolean addPhone(PhoneEntity phoneEntity) {
         session.save(phoneEntity);
         transaction.commit();
         return true;
@@ -136,6 +190,14 @@ public class Phone {
 
     public void setPinyin(String pinyin) {
         this.pinyin = pinyin;
+    }
+
+    public String getShengmu() {
+        return shengmu;
+    }
+
+    public void setShengmu(String shengmu) {
+        this.shengmu = shengmu;
     }
 
     public String getEmail() {
@@ -249,4 +311,5 @@ public class Phone {
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
     }
+
 }

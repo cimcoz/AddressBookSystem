@@ -14,6 +14,7 @@ H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\mode
 H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\object\ParseMD5.java
 H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\dao\GroupsEntity.java
 H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\filter\Utf8Filter.java
+H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\model\Config.java
 H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\model\GroupsRecord.java
 H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\object\ParseJson.java
 H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\java\com\project\contact\controller\LoginController.java

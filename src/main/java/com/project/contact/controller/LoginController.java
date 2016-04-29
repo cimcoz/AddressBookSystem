@@ -25,7 +25,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String index(ModelMap model) {
-        model.addAttribute("errMessage","");
+        model.addAttribute("errMessage", "");
         return "login";
     }
 
@@ -35,8 +35,8 @@ public class LoginController {
         password = new ParseMD5().parseStrToMd5L32(password);
         UserEntity realUser = user.getUserByUsername(user.getUsername());
         if (password.equals(realUser.getPassword())) {
-            httpSession.setAttribute("userId",realUser.getId());
-            httpSession.setAttribute("username",realUser.getUsername());
+            httpSession.setAttribute("userId", realUser.getId());
+            httpSession.setAttribute("username", realUser.getUsername());
             response.sendRedirect(request.getContextPath() + "/contact/phone.html");
             return "";
         } else {

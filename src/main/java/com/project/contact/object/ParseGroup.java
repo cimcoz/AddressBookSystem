@@ -27,8 +27,8 @@ public class ParseGroup {
         Groups groups=new Groups();
         String tmp="";
         List<GroupsRecordEntity> list=groupsRecord.getGroupsRecordByPhoneId(id);
-        for(GroupsRecordEntity v:list){
-            System.out.println("record entity:"+v);
+        for(int i=0;i<list.size();i++){
+            GroupsRecordEntity v=list.get(i);
             if(v!=null){
                 int groupId=v.getGroupId();
                 GroupsEntity g=groups.getGroupById(groupId);
@@ -44,11 +44,9 @@ public class ParseGroup {
         GroupsRecord groupsRecord=new GroupsRecord();
         List<PhoneEntity> data=new ArrayList<>();
         List<GroupsRecordEntity>list=groupsRecord.getGroupsRecordByGroupId(groupId,userId);
-        System.out.print("records:"+list);
         for(GroupsRecordEntity v:list){
             if(v!=null){
                 PhoneEntity p=phone.getPhoneById(v.getPhoneId());
-                System.out.println("phone："+p+"phoneId"+v.getPhoneId());
                 data.add(p);
             }
         }

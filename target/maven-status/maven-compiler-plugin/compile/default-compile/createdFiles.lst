@@ -9,5 +9,6 @@ com\project\contact\controller\DataController.class
 com\project\contact\controller\LoginController.class
 com\project\contact\dao\UserEntity.class
 com\project\contact\model\Groups.class
+com\project\contact\model\Config.class
 com\project\contact\dao\ConfigEntity.class
 com\project\contact\object\ParseGroup.class

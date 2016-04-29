@@ -14,6 +14,7 @@ public class PhoneEntity {
     private String number2;
     private String name;
     private String pinyin;
+    private String shengmu;
     private String email;
     private String qq;
     private String workAddress;
@@ -81,6 +82,16 @@ public class PhoneEntity {
 
     public void setPinyin(String pinyin) {
         this.pinyin = pinyin;
+    }
+
+    @Basic
+    @Column(name = "shengmu", nullable = false, length = 255)
+    public String getShengmu() {
+        return shengmu;
+    }
+
+    public void setShengmu(String shengmu) {
+        this.shengmu = shengmu;
     }
 
     @Basic
@@ -206,4 +217,7 @@ public class PhoneEntity {
         result = 31 * result + (image != null ? image.hashCode() : 0);
         return result;
     }
+
+
+
 }

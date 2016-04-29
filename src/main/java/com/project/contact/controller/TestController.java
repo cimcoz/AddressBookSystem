@@ -9,6 +9,6 @@ import org.junit.Test;
 public class TestController {
     @Test
     public void test(){
-        System.out.println(new ParsePinYin().getFullSpell("行业"));
+        System.out.println(new ParsePinYin().getFirstSpell("行业"));
     }
 }

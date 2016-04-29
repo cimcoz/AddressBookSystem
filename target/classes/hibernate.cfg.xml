@@ -15,8 +15,8 @@
         <!--连接数据库是密码-->
         <property name="connection.password">root</property>
         <!--是否在后台显示Hibernate用到的SQL语句，开发时设置为true，便于差错，程序运行时可以在Eclipse的控制台显示Hibernate的执行Sql语句。项目部署后可以设置为false，提高运行效率-->
-        <property name="hibernate.show_sql">true</property>
-        <property name="format_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="format_sql">false</property>
         <!--connection.useUnicode连接数据库时是否使用Unicode编码-->
         <property name="Connection.useUnicode">true</property>
         <!--connection.characterEncoding连接数据库时数据的传输字符集编码方式，最好设置为gbk，用gb2312有的字符不全-->

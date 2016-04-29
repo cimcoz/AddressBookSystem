@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>java 课程设计</title>
+    <title>通讯录管理系统</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        用户密码修改
+                        新增联系人
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
@@ -97,34 +97,9 @@
                             <i class="fa fa-dashboard"></i> <a href="javascript:void(0);"> 通讯录管理系统</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-file"></i> 用户密码修改
+                            <i class="fa fa-file"></i> 新增联系人
                         </li>
                     </ol>
-                </div>
-                <div class="col-sm-7">
-                    <form class="form-horizontal" id="submit-form">
-                        <p>
-                            <label for="opass" class=""><span style="color:red"> * </span> 旧密码</label>
-                            <input type="password" class="form-control required" id="opass" name="opass"
-                                   placeholder="旧密码"
-                                   style="width:20%;height:auto;min-width:400px;">
-                        </p>
-                        <p>
-                            <label for="newpass" class=""><span style="color:red"> * </span> 新密码</label>
-                            <input type="password" class="form-control required" id="newpass" name="newpass"
-                                   placeholder="新密码"
-                                   style="width:20%;height:auto;min-width:400px;">
-                        </p>
-                        <p>
-                            <label for="repass" class=""><span style="color:red"> * </span> 确认密码</label>
-                            <input type="password" class="form-control required" id="repass" name="repass"
-                                   placeholder="确认密码"
-                                   style="width:20%;height:auto;min-width:400px;">
-                        </p>
-                        <div class="">
-                            <button class="btn btn-success" id="form-submit-btn" type="button">提交</button>
-                        </div>
-                    </form>
                 </div>
 
             </div>
@@ -146,35 +121,5 @@
 <script src="/static/js/http.js"></script>
 <script src="/static/js/juicer-min.js"></script>
 <script src="/static/js/init.js"></script>
-<script type="application/javascript">
-    $(document).ready(function () {
-        $("#form-submit-btn").on("click", function () {
-            var opass = $("input[name='opass']").val();
-            var newpass = $("input[name='newpass']").val();
-            var repass = $("input[name='repass']").val();
-            if (opass && newpass && repass) {
-                if (newpass != repass) {
-                    alert("两次输入密码不一致");
-                    $("#input[name='newpass']").focus();
-                    return false;
-                }
-                var data = {
-                    opass: opass,
-                    newpass: newpass
-                };
-                var result = http.httpPost("/data/changePass", data);
-                if (result==1) {
-                    alert("密码修改成功");
-                    window.location.href = "/contact/phone";
-                } else {
-                    alert("密码错误！");
-                }
-            } else {
-                alert("请完整输入");
-                return false;
-            }
-        });
-    });
-</script>
 </body>
 </html>

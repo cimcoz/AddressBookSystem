@@ -74,6 +74,19 @@ public class GroupsRecord {
         return true;
     }
 
+    public boolean deleteGroupsRecordByPhoneId(Integer phoneId, Integer userId) {
+        List<GroupsRecordEntity> list=new ArrayList<>();
+        list = crit.add(Restrictions.eq("phoneId", phoneId)).add(Restrictions.eq("userId", userId)).list();
+        if ( list == null) {
+            return false;
+        }
+        for (GroupsRecordEntity v : list) {
+            session.delete(v);
+        }
+        transaction.commit();
+        return true;
+    }
+
     public List<GroupsRecordEntity> getGroupsRecordByPhoneId(Integer phoneId){
         List<GroupsRecordEntity>list=crit.add(Restrictions.eq("phoneId",phoneId)).list();
         return list;
