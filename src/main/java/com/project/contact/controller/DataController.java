@@ -215,6 +215,19 @@ public class DataController {
         }
     }
 
+    //删除phone的全部分组
+    @RequestMapping(value = "/groupsRecord", method = RequestMethod.DELETE, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String addGroupsRecord(@RequestParam("id") Integer id , HttpSession httpSession) {
+        int userId = (int) httpSession.getAttribute("userId");
+        GroupsRecord groupsRecord = new GroupsRecord();
+        if (groupsRecord.deleteGroupsRecordByPhoneId(id, userId)) {
+            return "1";
+        } else {
+            return "0";
+        }
+    }
+
     /* ---------------------------------------- */
     /* ----------------GroupsRecord------------------------ */
     @RequestMapping(value = "/config", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})

@@ -55,7 +55,7 @@
             <li>
                 <a href="/contact/groupsManage.html"><i class="fa fa-bell"></i> 分组管理</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="/contact/data"><i class="fa fa-user"></i> 导入与导出 </a>
             </li>
             <li>
@@ -68,7 +68,7 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav" id="groups">
-                <li class="active">
+                <li class=>
                     <a href="/contact/phone.html">所有联系人</a>
                 </li>
                 <script id="tpl-groups" type="text/template">

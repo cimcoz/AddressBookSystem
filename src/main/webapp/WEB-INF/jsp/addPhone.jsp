@@ -96,7 +96,7 @@
                         <li>
                             <i class="fa fa-dashboard"></i> <a href="javascript:void(0);"> 通讯录管理系统</a>
                         </li>
-                        <li class="active">
+                        <li class="">
                             <i class="fa fa-file"></i> 新增联系人
                         </li>
                     </ol>

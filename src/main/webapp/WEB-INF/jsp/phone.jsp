@@ -123,7 +123,7 @@
                 </div>
                 <div id="search" class="pull-left">
                     <div class="col-sm-10">
-                        <label >搜索</label>
+                        <label>搜索</label>
                         <input class="form-control" type="text" name="search" placeholder="姓名/电话/拼音/首字母"
                                style="min-width: 300px;">
                     </div>
@@ -157,6 +157,33 @@
 </div>
 <!-- /#wrapper -->
 
+<div class="modal fade" id="changeModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改基础信息选项
+                </h4>
+            </div>
+            <div class="modal-body">
+                <label>组名</label>
+
+                <input type="hidden" name="id"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="change-btn" class="btn btn-primary">
+                    修改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
 <script id="tpl-phones" type="text/template">
     {@each phones as item,k}
     <tr>
@@ -180,6 +207,10 @@
                     修改联系人
                 </button>
             </a>
+            <button type="button" class="btn btn-info" name="table-btn-add-group">
+                <input type="hidden" value="${item.id}"/>
+                &nbsp;修改分组&nbsp;
+            </button>
             <button type="button" class="btn btn-danger" name="table-btn-delete">
                 <input type="hidden" value="${item.id}"/>
                 删除联系人
@@ -209,6 +240,7 @@
         }
 
         init();
+        initChange();
         function init() {
             loading.showLoading();
             var tpl_phones = $("#tpl-phones").html();
@@ -227,7 +259,7 @@
         }
 
         function bindInit() {
-            $("button[name='table-btn-delete']").on("click",function () {
+            $("button[name='table-btn-delete']").on("click", function () {
                 if (confirm("确认删除联系人？")) {
                     var id = $(this).find("input").val();
                     var result = http.httpDelete("/data/phone?id=" + id, null);
@@ -242,6 +274,36 @@
                 }
             });
         }
+
+        function initChange() {
+            var tpl = '{@each group as item,k}' +
+                    '<p><input type="checkbox" name="group" value="${item.id}"> ${item.name}</p>' +
+                    '{@/each}';
+            var result = http.httpGet("/data/group");
+            var data = {
+                group: result
+            };
+            var html = juicer(tpl, data);
+            $(".modal-body").append(html);
+        }
+
+        $("button[name='table-btn-add-group']").on("click", function () {
+            $("#changeModal").modal('show');
+            $("#changeModal").find("input[name='id']").val($(this).find("input").val());
+        });
+        $("#change-btn").on("click", function () {
+            var phone_id = $("#changeModal").find("input[name='id']").val();
+            var result = http.httpDelete("/data/groupsRecord?id=" + phone_id, null);
+            if (result != 1) {
+                alert("修改失败");
+                return false;
+            }
+            $('input[name="group"]:checked').each(function () {
+                var group_id = $(this).val();
+                var r = http.httpPost("/data/groupsRecord", {phoneId: phone_id, groupId: group_id});
+            });
+            location.reload();
+        });
 
         $("#search").find("input").on("change", function () {
             var search = $("#search").find("input").val();

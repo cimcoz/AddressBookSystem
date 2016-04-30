@@ -36,6 +36,7 @@ public class Phone {
     private String homePage;
     private String postCode;
     private String image;
+    private String mark;
 
     private Session session;
     SessionFactory sessionFactory;
@@ -127,6 +128,9 @@ public class Phone {
         }
         if (image != null && !image.isEmpty()) {
             phoneEntity.setImage(image);
+        }
+        if (mark != null && !mark.isEmpty()) {
+            phoneEntity.setMark(mark);
         }
         return phoneEntity;
     }
@@ -278,6 +282,14 @@ public class Phone {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 
     public Session getSession() {

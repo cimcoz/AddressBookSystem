@@ -48,7 +48,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">20
+        <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -87,7 +87,7 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav" id="groups">
-                <li class="active">
+                <li>
                     <a href="/contact/phone.html">所有联系人</a>
                 </li>
                 <script id="tpl-groups" type="text/template">
@@ -110,7 +110,6 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         查看联系人
-                        <small></small>
                     </h1>
                     <ol class="breadcrumb">
                         <li>
@@ -120,16 +119,6 @@
                             <i class="fa fa-file"></i> 查看联系人
                         </li>
                     </ol>
-                </div>
-                <div id="search" class="pull-left">
-                    <div class="col-sm-10">
-                        <label >搜索</label>
-                        <input class="form-control" type="text" name="search" placeholder="姓名/电话/拼音/首字母"
-                               style="min-width: 300px;">
-                    </div>
-                    <!--button type="button" class="btn btn-primary">
-                        搜索
-                    </button-->
                 </div>
 
                 <table class="table table-hover">
@@ -157,6 +146,33 @@
 </div>
 <!-- /#wrapper -->
 
+<div class="modal fade" id="changeModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改基础信息选项
+                </h4>
+            </div>
+            <div class="modal-body">
+                <label>组名</label>
+
+                <input type="hidden" name="id"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="change-btn" class="btn btn-primary">
+                    修改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
 <script id="tpl-phones" type="text/template">
     {@each phones as item,k}
     <tr>
@@ -180,6 +196,10 @@
                     修改联系人
                 </button>
             </a>
+            <button type="button" class="btn btn-info" name="table-btn-add-group">
+                <input type="hidden" value="${item.id}"/>
+                &nbsp;修改分组&nbsp;
+            </button>
             <button type="button" class="btn btn-danger" name="table-btn-delete">
                 <input type="hidden" value="${item.id}"/>
                 删除联系人
@@ -199,6 +219,8 @@
 <script src="/static/js/init.js"></script>
 <script type="application/javascript">
     $(document).ready(function () {
+        var request = GetRequest();
+        var group_id = request['id'];
         var loading = {
             showLoading: function () {
                 $(".loading").attr("display", "block");
@@ -209,10 +231,12 @@
         }
 
         init();
+        initChange();
         function init() {
             loading.showLoading();
             var tpl_phones = $("#tpl-phones").html();
-            var result = http.httpGet("/data/phone");
+            var result = http.httpGet("/data/groupPhone?id=" + group_id);
+            //获取电话信息
             if (result != 0) {
                 var data = {
                     phones: result
@@ -222,12 +246,17 @@
             } else {
                 $("#content").append("<td>暂时没有联系人</td>");
             }
+            //获取组名
+            var result = http.httpGet("/data/group/" + group_id);
+            if (result != 0) {
+                $(".page-header").text(result[0].name);
+            }
             loading.hideLoading();
-            bindInit();
+            bindDelete();
         }
 
-        function bindInit() {
-            $("button[name='table-btn-delete']").on("click",function () {
+        function bindDelete() {
+            $("button[name='table-btn-delete']").on("click", function () {
                 if (confirm("确认删除联系人？")) {
                     var id = $(this).find("input").val();
                     var result = http.httpDelete("/data/phone?id=" + id, null);
@@ -243,31 +272,52 @@
             });
         }
 
-        $("#search").find("input").on("change", function () {
-            var search = $("#search").find("input").val();
-            if (search != "" && search != null) {
-                loading.showLoading();
-                var search = $("#search").find("input").val();
-                var tpl_phones = $("#tpl-phones").html();
-                var result = http.httpGet("/data/searchPhone?search=" + search);
-                $("#content").empty();
-                if (result != 0) {
-                    var data = {
-                        phones: result
-                    };
-                    var html = juicer(tpl_phones, data);
-                    $("#content").append(html);
-                } else {
-                    $("#content").append("<td>暂时没有找到联系人</td>");
-                }
-                loading.hideLoading();
-                bindInit();
-            } else {
-                init();
-            }
+        function initChange() {
+            var tpl = '{@each group as item,k}' +
+                    '<p><input type="checkbox" name="group" value="${item.id}"> ${item.name}</p>' +
+                    '{@/each}';
+            var result = http.httpGet("/data/group");
+            var data = {
+                group: result
+            };
+            var html = juicer(tpl, data);
+            $(".modal-body").append(html);
+        }
 
+        $("button[name='table-btn-add-group']").on("click", function () {
+            $("#changeModal").modal('show');
+            $("#changeModal").find("input[name='id']").val($(this).find("input").val());
+        });
+        $("#change-btn").on("click", function () {
+            var phone_id = $("#changeModal").find("input[name='id']").val();
+            var result = http.httpDelete("/data/groupsRecord?id=" + phone_id, null);
+            if (result != 1) {
+                alert("修改失败");
+                return false;
+            }
+            $('input[name="group"]:checked').each(function () {
+                var group_id = $(this).val();
+                var r = http.httpPost("/data/groupsRecord", {phoneId: phone_id, groupId: group_id});
+            });
+            location.reload();
         });
 
+
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+        // var 参数1,参数2,参数3,参数N;
+        // 参数N = Request['参数N'];
 
     });
 </script>

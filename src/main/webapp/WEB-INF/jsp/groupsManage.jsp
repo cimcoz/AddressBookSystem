@@ -71,7 +71,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li  class="active">
                 <a href="/contact/groupsManage.html"><i class="fa fa-bell"></i> 分组管理</a>
             </li>
             <li>
@@ -87,7 +87,7 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav" id="groups">
-                <li class="active">
+                <li>
                     <a href="/contact/phone.html">所有联系人</a>
                 </li>
                 <script id="tpl-groups" type="text/template">
@@ -248,7 +248,7 @@
             var result = http.httpGet("/data/group/" + id, null);
             console.log(result);
             if (result) {
-                var modal = $("#changeModal");
+                var modal = $("#changeModal").modal('show');
                 modal.find("input[name='id']").val(result[0].id);
                 modal.find("input[name='name']").val(result[0].name);
             }
@@ -256,8 +256,8 @@
         });
         $("#change-btn").on("click", function () {
             var modal = $("#changeModal");
-            var id = modal.find("input[name='id']").val(result[0].id);
-            var name = modal.find("input[name='name']").val(result[0].name);
+            var id = modal.find("input[name='id']").val();
+            var name = modal.find("input[name='name']").val();
             var result = http.httpPut("/data/group", {id: id, name: name});
             if (result == 1) {
                 location.reload();

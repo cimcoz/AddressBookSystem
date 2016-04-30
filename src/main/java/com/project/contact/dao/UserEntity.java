@@ -3,7 +3,7 @@ package com.project.contact.dao;
 import javax.persistence.*;
 
 /**
- * Created by jwl on 2016/4/26.
+ * Created by jwl on 2016/4/29.
  */
 @Entity
 @Table(name = "user", schema = "java_contact", catalog = "")

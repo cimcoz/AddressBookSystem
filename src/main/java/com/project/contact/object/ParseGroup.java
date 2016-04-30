@@ -44,7 +44,8 @@ public class ParseGroup {
         GroupsRecord groupsRecord=new GroupsRecord();
         List<PhoneEntity> data=new ArrayList<>();
         List<GroupsRecordEntity>list=groupsRecord.getGroupsRecordByGroupId(groupId,userId);
-        for(GroupsRecordEntity v:list){
+        for(int i=0;i<list.size();i++){
+            GroupsRecordEntity v=list.get(i);
             if(v!=null){
                 PhoneEntity p=phone.getPhoneById(v.getPhoneId());
                 data.add(p);

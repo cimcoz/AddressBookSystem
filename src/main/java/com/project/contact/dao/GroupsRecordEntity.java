@@ -3,7 +3,7 @@ package com.project.contact.dao;
 import javax.persistence.*;
 
 /**
- * Created by jwl on 2016/4/26.
+ * Created by jwl on 2016/4/29.
  */
 @Entity
 @Table(name = "groups_record", schema = "java_contact", catalog = "")
@@ -75,5 +75,15 @@ public class GroupsRecordEntity {
         result = 31 * result + groupId;
         result = 31 * result + phoneId;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupsRecordEntity{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", groupId=" + groupId +
+                ", phoneId=" + phoneId +
+                '}';
     }
 }

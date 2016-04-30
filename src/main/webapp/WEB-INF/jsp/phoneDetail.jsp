@@ -68,7 +68,7 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav" id="groups">
-                <li class="active">
+                <li>
                     <a href="/contact/phone.html">所有联系人</a>
                 </li>
                 <script id="tpl-groups" type="text/template">
@@ -87,9 +87,9 @@
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="content">
                     <h1 class="page-header">
-                        新增联系人
+                        详情
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
@@ -97,9 +97,10 @@
                             <i class="fa fa-dashboard"></i> <a href="javascript:void(0);"> 通讯录管理系统</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-file"></i> 新增联系人
+                            <i class="fa fa-file"></i> 联系人详情
                         </li>
                     </ol>
+
                 </div>
 
             </div>
@@ -111,7 +112,66 @@
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
+<script id="tpl-detail" type="text/template">
+    <table class="table table-hover table-bordered">
+        {@if item}
+        <tr>
+            <td>头像</td>
+            <td>
+                <img src="${item.image}" height="200px" width="auto"/>
+            </td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td>${item.name}</td>
+        </tr>
+        <tr>
+            <td>联系电话</td>
+            <td>${item.number}</td>
+        </tr>
+        <tr>
+            <td>即时通讯工具及号码</td>
+            <td>${item.number2}</td>
+        </tr>
+        <tr>
+            <td>电子邮箱</td>
+            <td>${item.email}</td>
+        </tr>
+        <tr>
+            <td>个人主页</td>
+            <td>${item.home_page}</td>
+        </tr>
+        <tr>
+            <td>生日</td>
+            <td>${item.birthday}</td>
+        </tr>
+        <tr>
+            <td>工作单位</td>
+            <td>${item.work_address}</td>
+        </tr>
+        <tr>
+            <td>家庭地址</td>
+            <td>${item.home_address}</td>
+        </tr>
+        <tr>
+            <td>邮编</td>
+            <td>${item.post_code}</td>
+        </tr>
+        <tr>
+            <td>所属组</td>
+            <td>${item.group}</td>
+        </tr>
+        <tr>
+            <td>备注</td>
+            <td>${item.mark}</td>
+        </tr>
 
+        </tbody>
+        {@else}
+        <td>暂时没有信息</td>
+        {@/if}
+    </table>
+</script>
 
 <!-- jQuery -->
 <script src="/static/js/jquery-1.11.3.min.js"></script>
@@ -121,5 +181,51 @@
 <script src="/static/js/http.js"></script>
 <script src="/static/js/juicer-min.js"></script>
 <script src="/static/js/init.js"></script>
+<script type="application/javascript">
+    $(document).ready(function () {
+        var request=GetRequest();
+        var id=request['id'];
+        var loading = {
+            showLoading: function () {
+                $(".loading").attr("display", "block");
+            },
+            hideLoading: function () {
+                $(".loading").attr("display", "none");
+            }
+        }
+
+        init();
+        function init() {
+            loading.showLoading();
+            var tpl_phones = $("#tpl-detail").html();
+            var result = http.httpGet("/data/phone/"+id);
+            //获取电话信息
+            if (result != 0) {
+                $(".page-header").text(result[0].name);
+                var data = {
+                    item: result[0]
+                };
+                var html = juicer(tpl_phones, data);
+                $("#content").append(html);
+            }
+            loading.hideLoading();
+        }
+
+        function GetRequest() {
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+        // var 参数1,参数2,参数3,参数N;
+        // 参数N = Request['参数N'];
+    });
+</script>
 </body>
 </html>

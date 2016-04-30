@@ -5,6 +5,7 @@ import com.project.contact.dao.PhoneEntity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -45,7 +46,7 @@ public class ParseJson {
                 tmp.put("number2",v.getNumber2());
                 tmp.put("name", v.getName());
                 tmp.put("pinyin",v.getPinyin());
-                tmp.put("email",v.getPinyin());
+                tmp.put("email",v.getEmail());
                 tmp.put("qq",v.getQq());
                 tmp.put("work_address",v.getWorkAddress());
                 tmp.put("home_address",v.getHomeAddress());
@@ -53,6 +54,7 @@ public class ParseJson {
                 tmp.put("home_page",v.getHomePage());
                 tmp.put("post_code",v.getPostCode());
                 tmp.put("image",v.getImage());
+                tmp.put("mark",v.getMark());
                 String group=parseGroup.parsePhoneGroup(v);
                 tmp.put("group",group);
                 json.put(tmp);
@@ -72,7 +74,7 @@ public class ParseJson {
                 tmp.put("number",v.getNumber());
                 tmp.put("number2",v.getNumber2());
                 tmp.put("name", v.getName());
-                tmp.put("email",v.getPinyin());
+                tmp.put("email",v.getEmail());
                 String group=parseGroup.parsePhoneGroup(v);
                 tmp.put("group",group);
                 json.put(tmp);
