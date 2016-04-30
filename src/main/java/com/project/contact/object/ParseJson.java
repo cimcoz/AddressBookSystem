@@ -48,11 +48,11 @@ public class ParseJson {
                 tmp.put("pinyin",v.getPinyin());
                 tmp.put("email",v.getEmail());
                 tmp.put("qq",v.getQq());
-                tmp.put("work_address",v.getWorkAddress());
-                tmp.put("home_address",v.getHomeAddress());
+                tmp.put("workAddress",v.getWorkAddress());
+                tmp.put("homeAddress",v.getHomeAddress());
                 tmp.put("birthday",v.getBirthday());
-                tmp.put("home_page",v.getHomePage());
-                tmp.put("post_code",v.getPostCode());
+                tmp.put("homePage",v.getHomePage());
+                tmp.put("postCode",v.getPostCode());
                 tmp.put("image",v.getImage());
                 tmp.put("mark",v.getMark());
                 String group=parseGroup.parsePhoneGroup(v);

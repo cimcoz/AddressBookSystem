@@ -189,8 +189,16 @@
     <tr>
         <td>${item.name}</td>
         <td>${item.number}</td>
+        {@if item.number2}
         <td>${item.number2}</td>
+        {@else}
+        <td>无</td>
+        {@/if}
+        {@if item.email}
         <td>${item.email}</td>
+        {@else}
+        <td>无</td>
+        {@/if}
         {@if item.group}
         <td>${item.group}</td>
         {@else}

@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phone.jsp" line="256" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phone.jsp" line="264" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4d3c515-3ea8-4dbd-9874-0a2a1e13a967" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/head.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/jquery.fileupload-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/jquery.fileupload.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/jquery.fileupload-jquery-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/jquery.fileupload-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/jquery.fileupload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/jquery.iframe-transport.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/jquery.ui.widget.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/1461664941853QQ图片20160302135314.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/1461664955804QQ图片20160302135314.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/head.jpg" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/head.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/project/contact/controller/DataController.class" afterPath="$PROJECT_DIR$/target/classes/com/project/contact/controller/DataController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/project/contact/dao/GroupsRecordEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/project/contact/dao/GroupsRecordEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/project/contact/dao/PhoneEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/project/contact/dao/PhoneEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/project/contact/model/Phone.class" afterPath="$PROJECT_DIR$/target/classes/com/project/contact/model/Phone.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/project/contact/object/ParseGroup.class" afterPath="$PROJECT_DIR$/target/classes/com/project/contact/object/ParseGroup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/project/contact/object/ParseJson.class" afterPath="$PROJECT_DIR$/target/classes/com/project/contact/object/ParseJson.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/controller/DataController.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/controller/DataController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/ConfigEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/ConfigEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/GroupsEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/GroupsEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/GroupsRecordEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/GroupsRecordEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/PhoneEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/PhoneEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/UserEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/dao/UserEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/model/Phone.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/model/Phone.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseGroup.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseGroup.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseJson.java" afterPath="$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseJson.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addPhone.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addPhone.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/changePass.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/changePass.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupsManage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupsManage.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phone.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phone.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneByGroup.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneByGroup.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneDetail.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneDetail.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneModify.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneModify.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
     </list>
     <ignored path="contact.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,33 +58,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="phoneModify.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneModify.jsp">
+      <file leaf-file-name="data.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="79" column="25" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/project/contact/controller/DataController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="118" column="47" selection-start-line="118" selection-start-column="47" selection-end-line="118" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addPhone.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addPhone.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="193" column="114" selection-start-line="193" selection-start-column="114" selection-end-line="193" selection-end-column="114" />
+            <state relative-caret-position="486">
+              <caret line="128" column="55" selection-start-line="128" selection-start-column="55" selection-end-line="128" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -158,20 +128,20 @@
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/project/contact/model/Phone.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/project/contact/controller/DataController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/project/contact/dao/GroupsRecordEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseGroup.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/project/contact/model/GroupsRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/project/contact/dao/PhoneEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseJson.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phone.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addPhone.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/changePass.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupsManage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/contact/controller/DataController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addPhone.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phone.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneByGroup.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneDetail.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseJson.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneModify.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data.jsp" />
       </list>
     </option>
   </component>
@@ -350,6 +320,138 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="head" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -602,22 +704,22 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="aa3ba4cd-a7f8-4e96-901b-0d731307e31e" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\uploads\head" />
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF" />
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\resources" />
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\js" />
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\css" />
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\uploads\head" />
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\img" />
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\fonts" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.project.contact.dao" />
       <recent name="com.project.contact" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\uploads\head" />
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\img" />
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\js" />
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\fonts" />
-      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\static\css" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF\uploads\head" />
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\webapp\WEB-INF" />
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src\main\resources" />
+      <recent name="H:\apache-tomcat-9.0.0.M4\webapps\contact\src" />
     </key>
   </component>
   <component name="RunManager" selected="Maven.contact [jetty:run]">
@@ -1406,7 +1508,7 @@
       <workItem from="1461857195895" duration="3054000" />
       <workItem from="1461923619403" duration="16731000" />
       <workItem from="1461990584423" duration="852000" />
-      <workItem from="1462003987167" duration="1446000" />
+      <workItem from="1462003987167" duration="17532000" />
     </task>
     <servers />
   </component>
@@ -1443,7 +1545,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198033000" />
+    <option name="totallyTimeSpent" value="214119000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1512,34 +1614,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/reset.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/supersized-init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/supersized.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="122" selection-start-line="18" selection-start-column="122" selection-end-line="18" selection-end-column="122" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/project/contact/filter/LoginFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -1585,7 +1659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/head.jpg" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -1654,13 +1727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="650">
           <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1784,14 +1850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseJson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="74" column="50" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/project/contact/controller/ContactController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="625">
@@ -1811,14 +1869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="57" column="15" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupsManage.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -1827,52 +1877,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/jquery.fileupload.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/jquery.fileupload-ui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-930">
+          <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/jquery.ui.widget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/14620129601800823dd54564e9258ca2f34e79e82d158ccbf4e9b.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/uploads/head/head.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phone.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="227" column="42" selection-start-line="227" selection-start-column="42" selection-end-line="227" selection-end-column="42" />
+        <state relative-caret-position="72">
+          <caret line="189" column="8" selection-start-line="189" selection-start-column="8" selection-end-line="205" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addPhone.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="164" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="308" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneByGroup.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
+        <state relative-caret-position="287">
+          <caret line="313" column="8" selection-start-line="313" selection-start-column="8" selection-end-line="327" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneDetail.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/static/js/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+        <state relative-caret-position="135">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneModify.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="79" column="25" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
+        <state relative-caret-position="708">
+          <caret line="243" column="51" selection-start-line="243" selection-start-column="51" selection-end-line="243" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/phoneDetail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="146" column="13" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/project/contact/controller/DataController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="118" column="47" selection-start-line="118" selection-start-column="47" selection-end-line="118" selection-end-column="47" />
+        <state relative-caret-position="748">
+          <caret line="141" column="52" selection-start-line="141" selection-start-column="52" selection-end-line="141" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addPhone.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/project/contact/object/ParseJson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="193" column="114" selection-start-line="193" selection-start-column="114" selection-end-line="193" selection-end-column="114" />
+        <state relative-caret-position="485">
+          <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/data.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="128" column="55" selection-start-line="128" selection-start-column="55" selection-end-line="128" selection-end-column="55" />
           <folding />
         </state>
       </provider>

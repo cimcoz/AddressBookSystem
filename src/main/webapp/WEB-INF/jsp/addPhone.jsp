@@ -20,6 +20,9 @@
     <!-- Custom Fonts -->
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="/static/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="/static/css/jquery.fileupload-ui.css">
+
 </head>
 
 <body>
@@ -104,7 +107,11 @@
                 <div class="col-sm-7">
                     <form class="form-horizontal" id="submit-form">
                         <p>
-                            <button type="button" class="btn btn-info">添加头像</button>
+                            <button type="button" class="btn btn-info" id="add-image-btn">添加头像</button>
+                        </p>
+                        <p>
+                            <img id="form-image" src="/uploads/head/head.jpg" style="height:300px;width:auto;"/>
+                            <input type="hidden" id="image" name="image">
                         </p>
                         <p>
                             <label for="name" class=""><span style="color:red"> * </span> 姓名</label>
@@ -186,9 +193,9 @@
             </div>
             <div class="modal-body">
                 <div class="row fileupload-buttonbar" style="padding-left:15px;">
-                    <div class="thumbnail col-sm-6">
-                        <img id="weixin_show" style="height:180px;margin-top:10px;margin-bottom:8px;"
-                             src="__PUBLIC__/images/game/game_1.png" data-holder-rendered="true">
+                    <div class="thumbnail">
+                        <img id="weixin_show" style="height:300px;margin-top:10px;margin-bottom:8px;"
+                             src="/uploads/head/head.jpg" data-holder-rendered="true">
                         <div class="progress progress-striped active" role="progressbar" aria-valuemin="10"
                              aria-valuemax="100" aria-valuenow="0">
                             <div id="weixin_progress" class="progress-bar progress-bar-success" style="width:0%;"></div>
@@ -198,12 +205,14 @@
                                 <span>上传</span>
                                 <input type="file" id="weixin_image" name="weixin_image" multiple>
                             </span>
-                            <a id="weixin_cancle" href="javascript:void(0)" class="btn btn-warning" role="button"
-                               onclick="cancleUpload('weixin')" style="display:none">删除</a>
+                            <a id="weixin_cancel" href="javascript:void(0)" class="btn btn-warning" role="button"
+                               style="display:none">删除</a>
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div class="modal-footer">
+                <button name="submit" class="btn btn-info">确认</button>
             </div>
 
         </div><!-- /.modal-content -->
@@ -213,7 +222,10 @@
 
 <!-- jQuery -->
 <script src="/static/js/jquery-1.11.3.min.js"></script>
-
+<!-- file upload -->
+<script src="/static/js/jquery.ui.widget.js"></script>
+<script src="/static/js/jquery.fileupload.js"></script>
+<script src="/static/js/jquery.iframe-transport.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/js/http.js"></script>
@@ -241,7 +253,6 @@
                     data[name] = val;
                 }
             });
-            console.log(data);
             result = http.httpPost("/data/phone", data);
             if (result) {
                 alert("增加成功");
@@ -249,6 +260,48 @@
             } else {
                 alert("增加失败");
             }
+        });
+        $("#add-image-btn").on("click", function () {
+            $("#uploadModal").modal('show');
+        });
+        $("#uploadModal").find("button[name='submit']").on("click", function () {
+            var src = $("#weixin_show").attr("src");
+            console.log(src);
+            $("#form-image").attr("src", src);
+            $("#image").val(src);
+            $("#uploadModal").modal("hide");
+        })
+        $("#weixin_cancel").on("click", function () {
+            $("#weixin_image").attr("src", "/uploads/head/head.jpg");
+            $("#weixin_progress").css('width', '0%');
+            $("#weixin_upload").css({display: ""});
+            $("#weixin_cancel").css({display: "none"});
+        });
+        $("#weixin_image").fileupload({
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            maxFileSize: 999000,
+            url: '/data/upload',
+            sequentialUploads: true,
+            previewCrop: true
+        }).on('fileuploadprogress', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $("#weixin_progress").css('width', progress + '%');
+            $("#weixin_progress").html(progress + '%');
+        }).on('fileuploaddone', function (e, data) {
+            d = data.result;
+            console.log(e);
+            console.log(data);
+            if (d.status == 1) {
+                $("#weixin_show").attr("src", d.url);
+                $("#weixin_upload").css({display: "none"});
+                $("#weixin_cancel").css({display: ""});
+            } else {
+                alert(d.msg);
+            }
+        }).on('fileuploadfail', function (e, data) {
+            console.log(e);
+            console.log(data);
+            alert(data.msg);
         });
     });
 </script>

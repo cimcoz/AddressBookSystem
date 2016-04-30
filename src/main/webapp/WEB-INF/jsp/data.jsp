@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        新增联系人
+                        通讯录导入导出
                         <small></small>
                     </h1>
                     <ol class="breadcrumb">
@@ -97,7 +97,7 @@
                             <i class="fa fa-dashboard"></i> <a href="javascript:void(0);"> 通讯录管理系统</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-file"></i> 新增联系人
+                            <i class="fa fa-file"></i> 通讯录导入导出
                         </li>
                     </ol>
                 </div>
@@ -107,6 +107,18 @@
         </div>
         <!-- /.container-fluid -->
 
+        <div>
+            <p>
+                <label class="label-info">CSV</label>
+                <button type="button" class="btn btn-info" id="csv-input">CSV格式导入</button>
+                <button type="button" class="btn btn-success" id="csv-output">CSV格式导出</button>
+            </p>
+            <p>
+                <label class="label-info">vCard</label>
+                <button type="button" class="btn btn-info" id="vcard-input">vCard格式导入</button>
+                <button type="button" class="btn btn-success" id="vcard-output">vCard格式导出</button>
+            </p>
+        </div>
     </div>
     <!-- /#page-wrapper -->
 </div>

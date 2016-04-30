@@ -15,6 +15,7 @@ import com.project.contact.object.ParseMD5;
 import com.project.contact.object.ParsePinYin;
 import org.apache.commons.io.FileUtils;
 import org.hibernate.annotations.Parameter;
+import org.json.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -218,7 +219,7 @@ public class DataController {
     //删除phone的全部分组
     @RequestMapping(value = "/groupsRecord", method = RequestMethod.DELETE, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public String addGroupsRecord(@RequestParam("id") Integer id , HttpSession httpSession) {
+    public String addGroupsRecord(@RequestParam("id") Integer id, HttpSession httpSession) {
         int userId = (int) httpSession.getAttribute("userId");
         GroupsRecord groupsRecord = new GroupsRecord();
         if (groupsRecord.deleteGroupsRecordByPhoneId(id, userId)) {
@@ -242,13 +243,19 @@ public class DataController {
     //OK
     @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public String upload(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+    public String upload(@RequestParam("weixin_image") MultipartFile multipartFile) throws IOException {
+        JSONObject res = new JSONObject();
         if (!multipartFile.isEmpty()) {
-            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), new File("H:\\apache-tomcat-9.0.0.M4\\webapps\\contact\\src\\main\\webapp\\WEB-INF\\uploads\\head\\", System.currentTimeMillis() + multipartFile.getOriginalFilename()));
-            return "/uploads/head/" + System.currentTimeMillis() + multipartFile.getOriginalFilename();
+            String preName = "/uploads/head/";
+            String subName = System.currentTimeMillis() + multipartFile.getOriginalFilename();
+            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), new File("H:\\apache-tomcat-9.0.0.M4\\webapps\\contact\\src\\main\\webapp\\WEB-INF\\uploads\\head\\", subName));
+            res.put("url", preName+subName);
+            res.put("status", 1);
         } else {
-            return "0";
+            res.put("msg", "上传失败");
+            res.put("status", 0);
         }
+        return res.toString();
     }
 
     @RequestMapping(value = "/changePass", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})

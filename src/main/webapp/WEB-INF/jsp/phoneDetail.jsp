@@ -139,7 +139,7 @@
         </tr>
         <tr>
             <td>个人主页</td>
-            <td>${item.home_page}</td>
+            <td>${item.homePage}</td>
         </tr>
         <tr>
             <td>生日</td>
@@ -147,15 +147,15 @@
         </tr>
         <tr>
             <td>工作单位</td>
-            <td>${item.work_address}</td>
+            <td>${item.workAddress}</td>
         </tr>
         <tr>
             <td>家庭地址</td>
-            <td>${item.home_address}</td>
+            <td>${item.homeAddress}</td>
         </tr>
         <tr>
             <td>邮编</td>
-            <td>${item.post_code}</td>
+            <td>${item.postCode}</td>
         </tr>
         <tr>
             <td>所属组</td>
