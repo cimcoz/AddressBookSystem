@@ -8,11 +8,8 @@ import com.project.contact.model.Groups;
 import com.project.contact.model.GroupsRecord;
 import com.project.contact.model.Phone;
 import com.project.contact.model.User;
-import com.project.contact.object.ParseGroup;
-import com.project.contact.object.ParseJson;
+import com.project.contact.object.*;
 
-import com.project.contact.object.ParseMD5;
-import com.project.contact.object.ParsePinYin;
 import org.apache.commons.io.FileUtils;
 import org.hibernate.annotations.Parameter;
 import org.json.JSONObject;
@@ -100,7 +97,7 @@ public class DataController {
     @ResponseBody
     public String getPhone(HttpSession httpSession, Phone phone, HttpServletRequest httpServletRequest) throws IOException {
         Integer userId = (Integer) httpSession.getAttribute("userId");
-        List<PhoneEntity> list = phone.getAll(userId);
+        List<PhoneEntity> list = phone.getAllByUserId(userId);
         String json = new ParseJson().phoneToJson(list);
         return json;
     }
@@ -180,7 +177,7 @@ public class DataController {
         search = search.toLowerCase();
         List<PhoneEntity> list;
         if ("".equals(search) || search == "") {
-            list = phone.getAll(userId);
+            list = phone.getAllByUserId(userId);
         } else {
             list = phone.getPhoneBySearch(search, userId);
         }
@@ -274,6 +271,61 @@ public class DataController {
         } else {
             return "0";
         }
+    }
+
+    /* ----------------upload------------------------ */
+    @RequestMapping(value = "/downloadCsv", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String downloadCsv(HttpSession httpSession){
+        int userId=(int)httpSession.getAttribute("userId");
+        String preName = "/uploads/file/";
+        String subName = System.currentTimeMillis() +".csv";
+        Phone phone=new Phone();
+        List<PhoneEntity> list=new ArrayList<>();
+        list=phone.getAllByUserId(userId);
+        JSONObject res=new JSONObject();
+        ParseCsv parseCsv = new ParseCsv();
+        if(parseCsv.generateCsv(new File(httpSession.getServletContext().getRealPath("/") + "\\WEB-INF\\uploads\\file\\", subName),list)){
+            res.put("url", preName + subName);
+            res.put("status", 1);
+        }else{
+            res.put("msg", "下载失败");
+            res.put("status", 0);
+        }
+        return res.toString();
+    }
+
+
+    @RequestMapping(value = "/uploadCsv", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String uploadCsv(@RequestParam("weixin_image") MultipartFile multipartFile, HttpSession httpSession) throws IOException {
+        JSONObject res = new JSONObject();
+        if (!multipartFile.isEmpty()) {
+            String preName = "/uploads/file/";
+            String subName = System.currentTimeMillis() + multipartFile.getOriginalFilename();
+            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), new File(httpSession.getServletContext().getRealPath("/") + "\\WEB-INF\\uploads\\file\\", subName));
+            res.put("url", preName + subName);
+            res.put("status", 1);
+            //导入
+            Integer userId = (Integer) httpSession.getAttribute("userId");
+            Phone phone = new Phone();
+            ParseCsv parseCsv = new ParseCsv();
+            List<PhoneEntity> imports = parseCsv.importCsv(new File(httpSession.getServletContext().getRealPath("/") + "\\WEB-INF\\uploads\\file\\", subName));
+            phone.addPhoneList(imports, userId);
+        } else {
+            res.put("msg", "上传失败");
+            res.put("status", 0);
+        }
+        return res.toString();
+    }
+    /* ---------------------------------------- */
+
+    /* ---------------------------------------- */
+    @RequestMapping(value = "/getUserId", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String getUserId(HttpSession httpSession){
+        Integer userId=new Integer((int)httpSession.getAttribute("userId"));
+        return userId.toString();
     }
 
 }

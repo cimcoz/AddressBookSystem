@@ -45,4 +45,10 @@ public class LoginController {
         }
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register(ModelMap model) {
+        model.addAttribute("errMessage", "");
+        return "register";
+    }
+
 }

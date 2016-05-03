@@ -289,8 +289,6 @@
             $("#weixin_progress").html(progress + '%');
         }).on('fileuploaddone', function (e, data) {
             d = data.result;
-            console.log(e);
-            console.log(data);
             if (d.status == 1) {
                 $("#weixin_show").attr("src", d.url);
                 $("#weixin_upload").css({display: "none"});
@@ -299,8 +297,6 @@
                 alert(d.msg);
             }
         }).on('fileuploadfail', function (e, data) {
-            console.log(e);
-            console.log(data);
             alert(data.msg);
         });
     });

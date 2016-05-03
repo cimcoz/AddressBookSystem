@@ -63,4 +63,5 @@
 
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
     <mvc:resources mapping="/uploads/head/**" location="/WEB-INF/uploads/head/"/>
+    <mvc:resources mapping="/uploads/file/**" location="/WEB-INF/uploads/file/"/>
 </beans>

@@ -189,9 +189,9 @@
         <td>无</td>
         {@/if}
         {@if item.group}
-        <td>${item.group}</td>
+        <td><span class="label label-default">${item.group}</span></td>
         {@else}
-        <td>无</td>
+        <td><span class="label label-default">无</span></td>
         {@/if}
         <td>
             <a href="/contact/phoneDetail?id=${item.id}">

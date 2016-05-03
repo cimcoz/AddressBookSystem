@@ -75,8 +75,12 @@ public class Phone {
         list.add((PhoneEntity) session.get(PhoneEntity.class, id));
         return list;
     }
+    public List<PhoneEntity> getAll() {
+        List<PhoneEntity> list = crit.addOrder(Property.forName("pinyin").asc()).list();
+        return list;
+    }
 
-    public List<PhoneEntity> getAll(Integer userId) {
+    public List<PhoneEntity> getAllByUserId(Integer userId) {
         List<PhoneEntity> list = crit.add(Restrictions.eq("userId", userId)).addOrder(Property.forName("pinyin").asc()).list();
         return list;
     }
@@ -151,6 +155,15 @@ public class Phone {
 
     public boolean addPhone(PhoneEntity phoneEntity) {
         session.save(phoneEntity);
+        transaction.commit();
+        return true;
+    }
+    public boolean addPhoneList(List<PhoneEntity> list,int userId) {
+        for(int i=0;i<list.size();i++) {
+            PhoneEntity p = list.get(i);
+            p.setUserId(userId);
+            session.save(p);
+        }
         transaction.commit();
         return true;
     }

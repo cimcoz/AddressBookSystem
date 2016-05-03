@@ -20,6 +20,9 @@
     <!-- Custom Fonts -->
     <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="/static/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="/static/css/jquery.fileupload-ui.css">
+
 </head>
 
 <body>
@@ -101,37 +104,141 @@
                         </li>
                     </ol>
                 </div>
-
+                <div class="col-sm-7">
+                    <p>
+                    <h1>
+                        CSV
+                    </h1>
+                    <a href="javascript:void(0)" target="_blank">
+                        <button type="button" class="btn btn-info" id="csv-input">CSV格式导入</button>
+                    </a>
+                    <a href="/data/downloadCsv" target="_blank">
+                        <button type="button" class="btn btn-success" id="csv-output">CSV格式导出</button>
+                    </a>
+                    </p>
+                    <p>
+                    <h1>
+                        VCard
+                    </h1>
+                    <button type="button" class="btn btn-info" id="vcard-input">vCard格式导入</button>
+                    <a href="javascript:void(0);" target="_blank" id="vcard_out">
+                        <button type="button" class="btn btn-success" id="vcard-output">vCard格式导出</button>
+                    </a>
+                    </p>
+                </div>
             </div>
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
 
-        <div>
-            <p>
-                <label class="label-info">CSV</label>
-                <button type="button" class="btn btn-info" id="csv-input">CSV格式导入</button>
-                <button type="button" class="btn btn-success" id="csv-output">CSV格式导出</button>
-            </p>
-            <p>
-                <label class="label-info">vCard</label>
-                <button type="button" class="btn btn-info" id="vcard-input">vCard格式导入</button>
-                <button type="button" class="btn btn-success" id="vcard-output">vCard格式导出</button>
-            </p>
-        </div>
+
     </div>
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    上传头像
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row fileupload-buttonbar" style="padding-left:15px;">
+                    <div class="thumbnail">
+                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="10"
+                             aria-valuemax="100" aria-valuenow="0">
+                            <div id="weixin_progress" class="progress-bar progress-bar-success" style="width:0%;"></div>
+                        </div>
+                        <div class="caption" align="center">
+                            <span id="weixin_upload" class="btn btn-primary fileinput-button">
+                                <span>上传</span>
+                                <input type="file" id="weixin_image" name="weixin_image" multiple>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button name="submit" class="btn btn-info">确认</button>
+            </div>
 
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
 <!-- jQuery -->
 <script src="/static/js/jquery-1.11.3.min.js"></script>
-
+<!-- file upload -->
+<script src="/static/js/jquery.ui.widget.js"></script>
+<script src="/static/js/jquery.fileupload.js"></script>
+<script src="/static/js/jquery.iframe-transport.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/js/http.js"></script>
 <script src="/static/js/juicer-min.js"></script>
 <script src="/static/js/init.js"></script>
+<script type="application/javascript">
+    $(function () {
+        var upload_url = null;
+        init();
+        function init() {
+            id = http.httpGet("/data/getUserId");
+            var href = "http://localhost/vcard/index.php?user_id=" + id;
+            $("#vcard_out").attr("href", href);
+        }
+        $("#csv-output").on("click", function () {
+            var result = http.httpGet("/data/downloadCsv");
+            if(result.status==1){
+                $(this).parent().attr("href", result.url);
+            }else{
+                alert(result.msg);
+                return false;
+            }
+        });
+
+        $("#csv-input").on("click", function () {
+            upload_url = "/data/uploadCsv";
+            $("#uploadModal").modal('show');
+        });
+        $("#vcard-input").on("click", function () {
+            upload_url = "/data/uploadVCard";
+            $("#uploadModal").modal('show');
+        });
+
+        $("#weixin_image").fileupload({
+            acceptFileTypes: /(\.|\/)(csv|vcf)$/i,
+            maxFileSize: 999000,
+            url: upload_url,
+            sequentialUploads: true,
+            previewCrop: true
+        }).on('fileuploadprogress', function (e, data) {
+            console.log(upload_url);
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $("#weixin_progress").css('width', progress + '%');
+            $("#weixin_progress").html(progress + '%');
+        }).on('fileuploaddone', function (e, data) {
+            console.log(data);
+            console.log(upload_url);
+            d = data.result;
+            if (d.status == 1) {
+                $("#weixin_show").attr("src", d.url);
+                $("#weixin_upload").css({display: "none"});
+                alert("导入成功");
+                location.reload();
+            } else {
+                alert(d.msg);
+            }
+        }).on('fileuploadfail', function (e, data) {
+            alert(data.msg);
+        });
+    })
+</script>
 </body>
 </html>

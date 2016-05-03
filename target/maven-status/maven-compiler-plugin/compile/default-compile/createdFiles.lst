@@ -1,7 +1,15 @@
+com\project\contact\controller\TestController.class
 com\project\contact\model\Phone.class
+com\project\contact\filter\LoginFilter.class
 com\project\contact\dao\GroupsRecordEntity.class
+com\project\contact\model\User.class
+com\project\contact\object\ParseCsv.class
+com\project\contact\object\ParsePinYin.class
+com\project\contact\controller\ContactController.class
 com\project\contact\dao\GroupsEntity.class
 com\project\contact\dao\PhoneEntity.class
+com\project\contact\filter\Utf8Filter.class
+com\project\contact\object\ParseVcard.class
 com\project\contact\model\GroupsRecord.class
 com\project\contact\object\ParseJson.class
 com\project\contact\object\ParseMD5.class

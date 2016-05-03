@@ -26,6 +26,7 @@ public class PhoneEntity implements Comparable{
     private String mark;
 
     @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -254,6 +255,9 @@ public class PhoneEntity implements Comparable{
                 ", mark='" + mark + '\'' +
                 '}';
     }
+    public String toCsv(){
+        return number+","+number2+","+name+","+pinyin+","+shengmu+","+email+","+qq+","+workAddress+","+homeAddress+","+birthday+","+homePage+","+postCode+","+image+","+mark+",";
+    }
 
     @Override
     public int compareTo(Object o) {
@@ -270,4 +274,5 @@ public class PhoneEntity implements Comparable{
         }
         return -1;
     }
+
 }
