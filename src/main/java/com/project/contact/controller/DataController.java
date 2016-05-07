@@ -10,6 +10,7 @@ import com.project.contact.model.Phone;
 import com.project.contact.model.User;
 import com.project.contact.object.*;
 
+import net.sourceforge.cardme.io.CompatibilityMode;
 import org.apache.commons.io.FileUtils;
 import org.hibernate.annotations.Parameter;
 import org.json.JSONObject;
@@ -296,7 +297,7 @@ public class DataController {
     }
 
 
-    @RequestMapping(value = "/uploadCsv", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/uploadCsv", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public String uploadCsv(@RequestParam("weixin_image") MultipartFile multipartFile, HttpSession httpSession) throws IOException {
         JSONObject res = new JSONObject();
@@ -304,19 +305,29 @@ public class DataController {
             String preName = "/uploads/file/";
             String subName = System.currentTimeMillis() + multipartFile.getOriginalFilename();
             FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), new File(httpSession.getServletContext().getRealPath("/") + "\\WEB-INF\\uploads\\file\\", subName));
-            res.put("url", preName + subName);
+            res.put("msg", "导入成功");
             res.put("status", 1);
             //导入
             Integer userId = (Integer) httpSession.getAttribute("userId");
             Phone phone = new Phone();
             ParseCsv parseCsv = new ParseCsv();
-            List<PhoneEntity> imports = parseCsv.importCsv(new File(httpSession.getServletContext().getRealPath("/") + "\\WEB-INF\\uploads\\file\\", subName));
+            File f=new File(httpSession.getServletContext().getRealPath("/") + "\\WEB-INF\\uploads\\file\\", subName);
+            List<PhoneEntity> imports = parseCsv.importCsv(f);
+            f.delete();
             phone.addPhoneList(imports, userId);
         } else {
             res.put("msg", "上传失败");
             res.put("status", 0);
         }
         return res.toString();
+    }
+    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public String uploadVCard( HttpSession httpSession) throws IOException {
+        ParseVcard parseVcard=new ParseVcard();
+        parseVcard.setCompatibilityMode(CompatibilityMode.RFC2426);
+        String subName="javaContact.vcf";
+        parseVcard.parseVCard(new File(httpSession.getServletContext().getRealPath("/") + "\\WEB-INF\\uploads\\file\\", subName));
+        return "";
     }
     /* ---------------------------------------- */
 

@@ -136,7 +136,7 @@
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
-<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="uploadModalCsv" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -154,12 +154,12 @@
                     <div class="thumbnail">
                         <div class="progress progress-striped active" role="progressbar" aria-valuemin="10"
                              aria-valuemax="100" aria-valuenow="0">
-                            <div id="weixin_progress" class="progress-bar progress-bar-success" style="width:0%;"></div>
+                            <div class="progress-bar progress-bar-success weixin_progress" style="width:0%;"></div>
                         </div>
                         <div class="caption" align="center">
-                            <span id="weixin_upload" class="btn btn-primary fileinput-button">
+                            <span id="weixin_upload_csv" class="btn btn-primary fileinput-button">
                                 <span>上传</span>
-                                <input type="file" id="weixin_image" name="weixin_image" multiple>
+                                <input type="file" id="weixin_image_csv" name="weixin_image" multiple>
                             </span>
                         </div>
                     </div>
@@ -186,7 +186,6 @@
 <script src="/static/js/init.js"></script>
 <script type="application/javascript">
     $(function () {
-        var upload_url = null;
         init();
         function init() {
             id = http.httpGet("/data/getUserId");
@@ -204,33 +203,24 @@
         });
 
         $("#csv-input").on("click", function () {
-            upload_url = "/data/uploadCsv";
-            $("#uploadModal").modal('show');
+            $("#uploadModalCsv").modal('show');
         });
         $("#vcard-input").on("click", function () {
-            upload_url = "/data/uploadVCard";
             $("#uploadModal").modal('show');
         });
-
-        $("#weixin_image").fileupload({
-            acceptFileTypes: /(\.|\/)(csv|vcf)$/i,
+        $("#weixin_image_csv").fileupload({
+            url: "/data/uploadCsv",
             maxFileSize: 999000,
-            url: upload_url,
-            sequentialUploads: true,
-            previewCrop: true
+            sequentialUploads: true
         }).on('fileuploadprogress', function (e, data) {
-            console.log(upload_url);
             var progress = parseInt(data.loaded / data.total * 100, 10);
-            $("#weixin_progress").css('width', progress + '%');
-            $("#weixin_progress").html(progress + '%');
+            $(".weixin_progress").css('width', progress + '%');
+            $(".weixin_progress").html(progress + '%');
         }).on('fileuploaddone', function (e, data) {
-            console.log(data);
-            console.log(upload_url);
             d = data.result;
             if (d.status == 1) {
-                $("#weixin_show").attr("src", d.url);
-                $("#weixin_upload").css({display: "none"});
-                alert("导入成功");
+                $("#weixin_upload_csv").css({display: "none"});
+                alert(d.msg);
                 location.reload();
             } else {
                 alert(d.msg);
@@ -238,6 +228,12 @@
         }).on('fileuploadfail', function (e, data) {
             alert(data.msg);
         });
+
+        //确定键
+        $("button[name='submit']").on("click",function () {
+            $("#uploadModalCsv").modal('hide');
+            $("#uploadModalVCard").modal('hide');
+        })
     })
 </script>
 </body>

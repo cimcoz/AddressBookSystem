@@ -15,5 +15,4 @@ public class TestController {
         str = str.replaceAll("null", "");
         System.out.println(str);
     }
-
 }

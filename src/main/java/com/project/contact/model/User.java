@@ -76,6 +76,11 @@ public class User {
         return true;
     }
 
+    public boolean addUser(UserEntity userEntity){
+        session.save(userEntity);
+        transaction.commit();
+        return true;
+    }
     public void finalize() {
         //transaction.commit();
         session.close();

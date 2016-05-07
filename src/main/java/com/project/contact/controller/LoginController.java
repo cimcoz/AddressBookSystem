@@ -6,10 +6,7 @@ import com.project.contact.object.ParseMD5;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,10 +42,32 @@ public class LoginController {
         }
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public String register(ModelMap model) {
-        model.addAttribute("errMessage", "");
         return "register";
     }
-
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String registerPost(@RequestParam("username") String username,@RequestParam("password") String password) {
+        User user=new User();
+        UserEntity userEntity=new UserEntity();
+        userEntity.setUsername(username);
+        password = new ParseMD5().parseStrToMd5L32(password);
+        userEntity.setPassword(password);
+        if(user.addUser(userEntity)) {
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+    @RequestMapping(value = "/checkUsername", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String checkUsername(@RequestParam("username") String username) {
+        User user=new User();
+        if(user.getUserByUsername(username)==null){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
 }
