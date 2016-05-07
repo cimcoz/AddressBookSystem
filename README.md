@@ -1,4 +1,4 @@
-# ContactSystem
+# AddressBookSystem
 基于Java Spring+Hibernate的通讯录管理系统
 这是一个课程设计项目
 
