@@ -141,7 +141,7 @@
 
     </dependencies>
     <build>
-        <finalName>ideasimple</finalName>
+        <finalName>contact</finalName>
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -153,7 +153,7 @@
                     <scanIntervalSeconds>5</scanIntervalSeconds>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8080</port>
+                            <port>8888</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>

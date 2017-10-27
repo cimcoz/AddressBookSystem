@@ -2,10 +2,16 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="MySQL - java_contact@localhost" uuid="aa3ba4cd-a7f8-4e96-901b-0d731307e31e">
+      <database-info product="MySQL" version="5.7.18" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>java_contact.*</schema-pattern>
-      <default-schemas>java_contact.*</default-schemas>
+      <introspection-schemas>*:java_contact</introspection-schemas>
+      <resolve-scope>*:java_contact</resolve-scope>
+      <unqualified-resolve-schemas>*:java_contact</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>

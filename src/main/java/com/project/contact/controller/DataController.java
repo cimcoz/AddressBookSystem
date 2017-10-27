@@ -11,17 +11,18 @@ import com.project.contact.model.User;
 import com.project.contact.object.*;
 
 import net.sourceforge.cardme.io.CompatibilityMode;
+import org.springframework.context.ApplicationContext;
 import org.apache.commons.io.FileUtils;
-import org.hibernate.annotations.Parameter;
 import org.json.JSONObject;
-import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -246,7 +247,7 @@ public class DataController {
         if (!multipartFile.isEmpty()) {
             String preName = "/uploads/head/";
             String subName = System.currentTimeMillis() + multipartFile.getOriginalFilename();
-            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), new File("H:\\apache-tomcat-9.0.0.M4\\webapps\\contact\\src\\main\\webapp\\WEB-INF\\uploads\\head\\", subName));
+            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), new File("I:\\hadoop\\share\\AddressBookSystem\\src\\main\\webapp\\WEB-INF\\uploads\\head\\", subName));
             res.put("url", preName+subName);
             res.put("status", 1);
         } else {
